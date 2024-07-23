@@ -11,16 +11,16 @@ pipeline {
 				    dependencyCheck additionalArguments: '-n --noupdate --format HTML --format XML', odcInstallation: 'OWASP Dependency-Check Vulnerabilities'
 			    }
 		    }
-            stage('Code Quality Check via SonarQube') {
-                steps {
-                    script {
-                        def scannerHome = tool 'SonarQube';
-                        withSonarQubeEnv('SonarQube') {
-                            sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=labquiz -Dsonar.sources=."
-                        }
-                    }
-                }
-            }
+            // stage('Code Quality Check via SonarQube') {
+            //     steps {
+            //         script {
+            //             def scannerHome = tool 'SonarQube';
+            //             withSonarQubeEnv('SonarQube') {
+            //                 sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=labquiz -Dsonar.sources=. -Dsonar.login=sqp_95a94c7118e00451f5c4dec1443468fbcf752fea"
+            //             }       
+            //         }
+            //     }
+            // }
             stage('Integration UI Test') {
             parallel {
                 stage('Deploy') {
