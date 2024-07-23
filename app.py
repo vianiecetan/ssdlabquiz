@@ -6,7 +6,7 @@ app.secret_key = 'supersecretkey'
 
 # Patterns for XSS and SQL injection
 XSS_PATTERN = re.compile(r'(<.*?>)|(["\'])|((alert|confirm|prompt)\s*\()|((?:script|on\w+)\s*=)', re.IGNORECASE)
-SQLI_PATTERN = re.compile(r'(?:--|\b(OR|AND)\b\s+\d+=\d+|;|\'|")', re.IGNORECASE)
+SQLI_PATTERN = re.compile(r'(?:--|\b(OR|AND|SELECT|UPDATE|DELETE|INSERT)\b\s+\d*=*\d*|;|\'|")', re.IGNORECASE)
 
 # Input validation function
 def validate_input(input_text):
