@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
@@ -55,6 +56,5 @@ def test_search_with_invalid_term(browser):
     assert wait.until(EC.title_contains(expected_title))
     
     # Check for the flash message
-    flash_messages = browser.find_elements(By.XPATH, "//body/text()")
-    flash_message_text = " ".join([msg.text for msg in flash_messages])
-    assert "Please try again." in flash_message_text
+    flash_message = browser.find_element(By.XPATH, "//body").text
+    assert "Please try again." in flash_message
