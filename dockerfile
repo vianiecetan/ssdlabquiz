@@ -7,8 +7,8 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y git
 
 # Configure Git user and email
-RUN git config --global user.name "your-full-name" \
-    && git config --global user.email "your-email"
+RUN git config --global user.name "vianiece_tan_yingqi" \
+    && git config --global user.email "2202045@sit.singaporetech.edu.sg"
 
 # Copy requirements and install dependencies
 COPY requirements.txt requirements.txt
