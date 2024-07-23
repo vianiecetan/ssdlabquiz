@@ -34,7 +34,7 @@ pipeline {
                     }
                     post {
                         always {
-                            junit 'reports/*.xml' // Adjust path to test reports
+                            junit 'reports/results.xml'  // Adjust this path if necessary
                         }
                     }
                 }
