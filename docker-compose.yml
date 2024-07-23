@@ -5,3 +5,20 @@ services:
     build: .
     ports:
       - "8000:8000"
+    volumes:
+      - .:/app
+    command: python app.py
+
+  selenium:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"
+
+  test:
+    build: .
+    command: pytest tests/test_ui.py --headless
+    depends_on:
+      - web
+      - selenium
+    environment:
+      - SELENIUM_REMOTE_URL=http://selenium:4444/wd/hub
