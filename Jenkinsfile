@@ -30,7 +30,7 @@ pipeline {
                     }
                     steps {
                         sh 'pip install -r requirements.txt'
-                        sh 'pytest test_ui.py --headless' // Running the tests
+                        sh 'pytest tests/test_ui.py --headless --junitxml=reports/results.xml' // Running the tests
                     }
                     post {
                         always {
