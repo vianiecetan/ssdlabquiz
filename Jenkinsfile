@@ -32,11 +32,6 @@ pipeline {
                         sh 'pip install -r requirements.txt'
                         sh 'pytest test_ui.py --headless --junitxml=reports/results.xml' // Running the tests
                     }
-                    post {
-                        always {
-                            junit 'reports/results.xml'  // Adjust this path if necessary
-                        }
-                    }
                 }
             }
         }
@@ -54,6 +49,7 @@ pipeline {
     post {
         always {
             recordIssues enabledForFailure: true, tool: sonarQube()
+            junit 'reports/results.xml'
         }
         success {
 			dependencyCheckPublisher pattern: 'dependency-check-report.xml'
